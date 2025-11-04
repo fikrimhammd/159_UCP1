@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const Komik = sequelize.define('Komik', {
-        id: {
+    const Kandang = sequelize.define('Kandang', {
+        ID: {
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true 
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         Usia_hewan: {
-            type: DataTypes.TEXT,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         Jenis_hewan: {
@@ -22,14 +22,14 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         Tahun_lahir: {
-            type: DataTypes.TEXT,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
 
 
     }, {
-        tableName : 'Kandang',
-        timestamps: true,
+        tableName : 'kandang',
+        timestamps: false,
         freezeTableName: true
     });
     return Kandang;

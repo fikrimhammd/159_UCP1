@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const db = require('./models');
-const kandang = require('./models/kandang');
+const kandang = require('./models/kandang.js');
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
@@ -32,7 +32,7 @@ app.post('/kandang', async (req, res) => {
 
 app.get('/kandang', async (req, res) => {
     try{
-        const kandang = await db.Komik.findAll();
+        const kandang = await db.Kandang.findAll();
         res.send(kandang);
     } catch(error){
         res.status(500).send({message: error.message});
@@ -44,12 +44,12 @@ app.put('/kandang/:id', async (req, res) => {
     const id = req.params.id;
     const data = req.body;
     try {
-        const kandang = await db.Komik.findByPk(id);
+        const kandang = await db.Kandang.findByPk(id);
         if (!kandang) {
             return res.status(404).send({ message: 'Kandang not found' });
         }
         await kandang.update(data);
-        res.send({message: 'Kandang updated successfully'}, komik);
+        res.send({message: 'Kandang updated successfully'}, kandang);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
